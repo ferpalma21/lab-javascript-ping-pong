@@ -1,5 +1,5 @@
 function Ball(x,y, paddle1, paddle2) {
-  this.direction = 'upRight';
+  this.direction = 'downRight';
 }
 
 Ball.prototype.randomDirection = function() {
@@ -10,7 +10,7 @@ Ball.prototype.move = function(){
   var that = this;
   var ballSpeed = 7;
   var userVerticalPosition = $('#paddle-user').position().top;
-  var userHorizontalPosition =$('#paddle-user').position().left;
+  var userHorizontalPosition = $('#paddle-user').position().left;
   var compVerticalPosition = $('#paddle-computer').position().top;
   var compHorizontalPosition = $('#paddle-computer').position().left;
   var minHeight = 2;
@@ -25,13 +25,16 @@ Ball.prototype.move = function(){
 
    switch (that.direction) {
      case 'upRight':
+     //if to check that ball bounces on paddle
+
      if ((userVerticalPosition < ballVerticalPosition) &&
      (ballVerticalPosition < userVerticalPosition + 50) &&
-     (ballHorizontalPosition < userHorizontalPosition) &&
-     (ballHorizontalPosition > userHorizontalPosition - 20)){
+     (ballHorizontalPosition < userVerticalPosition) &&
+     (ballHorizontalPosition > userVerticalPosition - 10)) {
        console.log("hola");
        that.direction = 'upLeft';
      }
+     //if to limit the board and the ball bounces on the wall
 
      if (ballVerticalPosition > minHeight &&
        ballHorizontalPosition < maxHorizontal) {
@@ -44,7 +47,10 @@ Ball.prototype.move = function(){
        break;
 
      case 'downRight':
-     if ((ballVerticalPosition > userVerticalPosition) && (ballVerticalPosition < userVerticalPosition + 50) && (ballHorizontalPosition < userHorizontalPosition) && (ballHorizontalPosition > userHorizontalPosition - 20)){
+     if ((ballVerticalPosition > userVerticalPosition) &&
+     (ballVerticalPosition < userVerticalPosition + 50) &&
+
+     (ballHorizontalPosition > userHorizontalPosition - 20)){
        console.log("adios");
        that.direction = 'downLeft';
      }

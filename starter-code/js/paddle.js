@@ -7,7 +7,7 @@ Paddle.prototype.restart = function(){
 };
 
 Paddle.prototype.hitBall = function(ball_y){
-  
+
 };
 
 
@@ -26,3 +26,6 @@ $(document).keydown(function(event) {
   }
   }
 });
+
+  $(document).on('keydown', function(e){key = e.keyCode;});
+  $(document).on('keyup', function(e){key = 0;});
