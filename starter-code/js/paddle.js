@@ -15,6 +15,7 @@ Paddle.prototype.hitBall = function(ball_y){
 $(document).keydown(function(event) {
   var paddleSpeed = 30;
   var y = $('#paddle-user').position().top;
+
   if(event.keyCode === 40){
     if(y < 350 ){
     $('#paddle-user').css({top: y += paddleSpeed});//Mover pa'bajo
